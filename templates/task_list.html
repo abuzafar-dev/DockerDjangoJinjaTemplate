@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="card">
+        <h1>Vazifalar ro'yxati</h1>
+        <p class="muted">Bajarildi: {{ done_count }} / {{ tasks|length }}</p>
+        <form method="post">
+            {{ csrf_input }}
+            {{ form.title }}
+            {{ form.title.errors }}
+            <p><button class="btn" type="submit">Qo'shish</button></p>
+        </form>
+    </div>
+
+    {% for task in tasks %}
+        <div class="card">
+            {% if task.is_done %}
+                <s>{{ task.title }}</s>
+            {% else %}
+                <strong>{{ task.title }}</strong>
+            {% endif %}
+            <p class="muted">{{ task.created_at.strftime('%d.%m.%Y %H:%M') }}</p>
+            <form method="post" action="{{ url('task_toggle', args=[task.pk]) }}" style="display:inline">
+                {{ csrf_input }}
+                <button class="btn btn-success" type="submit">{{ 'Qaytarish' if task.is_done else 'Bajarildi' }}</button>
+            </form>
+            <form method="post" action="{{ url('task_delete', args=[task.pk]) }}" style="display:inline">
+                {{ csrf_input }}
+                <button class="btn btn-danger" type="submit">O'chirish</button>
+            </form>
+        </div>
+    {% else %}
+        <p>Vazifalar yo'q.</p>
+    {% endfor %}
+{% endblock %}
