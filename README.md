@@ -2,6 +2,13 @@
 
 Django + Jinja2 loyihasi Docker ichida, PostgreSQL bilan. Misol sifatida vazifalar ro'yxati (todo): qo'shish, bajarildi deb belgilash, o'chirish.
 
+## Quick start
+
+```bash
+make run     # creates .venv and .env, installs deps, starts the app
+make test    # checks + tests
+```
+
 ## Docker bilan ishga tushirish
 
 ```bash
