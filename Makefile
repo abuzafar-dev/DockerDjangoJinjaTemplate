@@ -1,13 +1,13 @@
 .PHONY: help install run test down logs
 
 help:
-	@echo "make run      — Docker'da ishga tushirish (http://127.0.0.1:8000/)"
+	@echo "make run      — Docker'da ishga tushirish (http://127.0.0.1:8001/)"
 	@echo "make down     — to'xtatish"
 	@echo "make logs     — loglar"
 	@echo "make test     — testlar (Docker'siz)"
 
 run: .env
-	@echo "==> http://127.0.0.1:8000/"
+	@echo "==> http://127.0.0.1:8001/"
 	docker compose up --build
 
 down:
@@ -34,4 +34,4 @@ install: .venv/.installed
 	@echo "==> .env yaratildi (.env.example asosida)"
 
 test: install
-	@bash scripts/ci.sh
+	@POSTGRES_DB= bash scripts/ci.sh

@@ -16,7 +16,7 @@ cp .env.example .env
 docker compose up --build
 ```
 
-http://127.0.0.1:8000/
+http://127.0.0.1:8001/
 
 Superuser:
 
@@ -34,5 +34,4 @@ docker compose exec web python manage.py createsuperuser
 ## Testlar
 
 ```bash
-docker compose exec web python manage.py test
 ```
